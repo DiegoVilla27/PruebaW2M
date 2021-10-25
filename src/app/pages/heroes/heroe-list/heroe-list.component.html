@@ -1,0 +1,47 @@
+<div class="container-fluid">
+    <div class="row pt-5">
+        <div class="col-6 text-left mb-3">
+            <button type="button" class="btn btn-primary montserrat-bold" data-toggle="modal" data-target="#newHeroeModal">New Heroe</button>
+        </div>
+        <div class="col-6 text-right mb-3">
+            <div class="input-group">
+                <input type="text" class="form-control" placeholder="Search heroe by ID, Name, Power..." (change)="search($event)">
+                <div class="input-group-append">
+                    <button class="btn btn-outline-secondary" type="button" id="button-addon2">
+                        <fa-icon [icon]="faPaperPlane"></fa-icon>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="col-12">
+            <div class="table-responsive">
+                <table class="table table-bordered table-hover">
+                    <thead>
+                      <tr>
+                        <th scope="col" class="montserrat-bold">ID</th>
+                        <th scope="col" class="montserrat-bold">Heroe</th>
+                        <th scope="col" class="montserrat-bold">Power</th>
+                        <th scope="col" class="montserrat-bold">Actions</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let heroe of list">
+                            <th class="montserrat-bold" scope="row"><i>{{heroe?.id}}</i></th>
+                            <td class="montserrat-light">{{heroe?.name}}</td>
+                            <td class="montserrat-light">{{heroe?.power}}</td>
+                            <td>
+                                <button class="mx-2 btn btn-link btn-sm text-primary" data-toggle="modal" data-target="#editHeroeModal" (click)="setIdEditHeroe(heroe)"><fa-icon [icon]="faPencilAlt"></fa-icon></button>
+                                <button class="mx-2 btn btn-link btn-sm text-danger" (click)="deleteHeroe(heroe?.id)"><fa-icon [icon]="faTrash"></fa-icon></button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p class="badge badge-dark">Results: {{list.length}}</p>
+                <div *ngIf="!list.length" class="alert alert-primary w-100">There are no heroes on the list.</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<app-heroe-new></app-heroe-new>
+<app-heroe-edit></app-heroe-edit>

@@ -1,0 +1,13 @@
+.swal2-popup {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+.swal2-styled.swal2-confirm, .swal2-styled.swal2-cancel {
+    padding: 6px 15px;
+}
+.swal2-html-container {
+    margin: 10px 0px;
+}
+.swal2-close:focus {
+    outline: 0;
+    box-shadow: none;
+}

@@ -1,0 +1,52 @@
+<form [formGroup]="form" (ngSubmit)="animationEditHeroe()" autocomplete="off">
+    <div class="modal fade" id="editHeroeModal" tabindex="-1" aria-labelledby="editHeroeModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title montserrat-bold" id="editHeroeModalLabel">Edit Heroe {{heroe?.name}}</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <input 
+                        placeholder="Name..." 
+                        type="text" 
+                        class="form-control montserrat-light" 
+                        formControlName="name"
+                        [ngClass]="{'is-invalid': form.get('name').invalid && form.get('name').dirty, 'is-valid': form.get('name').valid && form.get('name').dirty }"
+                        >
+                        <div *ngFor="let validation of validation_messages.name">
+                            <div *ngIf="form.get('name').hasError(validation.type) && (form.get('name').dirty || form.get('name').touched)">
+                                <div class="form-text font-sz-08 text-danger montserrat-regular animate__animated animate__headShake">
+                                    <fa-icon [icon]="faExclamationTriangle"></fa-icon> &nbsp;<i>{{ validation.message }}</i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <input 
+                        placeholder="Power..." 
+                        type="text" 
+                        class="form-control montserrat-light" 
+                        formControlName="power"
+                        [ngClass]="{'is-invalid': form.get('power').invalid && form.get('power').dirty, 'is-valid': form.get('power').valid && form.get('power').dirty }"
+                        >
+                        <div *ngFor="let validation of validation_messages.power">
+                            <div *ngIf="form.get('power').hasError(validation.type) && (form.get('power').dirty || form.get('power').touched)">
+                                <div class="form-text font-sz-08 text-danger montserrat-regular animate__animated animate__headShake">
+                                    <fa-icon [icon]="faExclamationTriangle"></fa-icon> &nbsp;<i>{{ validation.message }}</i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary montserrat-bold" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary montserrat-bold" #btnSave>Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

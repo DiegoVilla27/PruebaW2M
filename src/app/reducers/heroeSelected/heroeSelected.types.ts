@@ -1,0 +1,1 @@
+export const selectedHeroe: string = '[HEROE] Selected Heroe'
